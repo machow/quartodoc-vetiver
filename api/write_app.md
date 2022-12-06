@@ -1,4 +1,4 @@
-# write_app
+# write_app {#sec-write_app}
 
 `write_app(board, pin_name: str, version: str = None, file: str = 'app.py', overwrite=False)`
 
