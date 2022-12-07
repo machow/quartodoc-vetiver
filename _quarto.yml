@@ -1,0 +1,31 @@
+project:
+  type: website
+
+website:
+  title: "Vetiver API docs"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - about.qmd
+      - href: api/index.qmd
+        text: API Docs
+
+  sidebar:
+    - id: api
+      title: Get Started
+      collapse-level: 2
+      style: "floating"
+      align: left
+      contents:
+        - href: api/compute_metrics.md
+        - href: api/write_app.md
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+
+
+
