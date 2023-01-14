@@ -1,5 +1,9 @@
 project:
   type: website
+  pre-render: "python -m quartodoc"
+
+filters:
+  - "interlinks"
 
 website:
   title: "Vetiver API docs"
@@ -8,8 +12,8 @@ website:
       - href: index.qmd
         text: Home
       - about.qmd
-      - href: api/index.qmd
-        text: API Docs
+      - href: reference/index.qmd
+        text: Reference
 
   sidebar:
     - id: api
@@ -18,6 +22,7 @@ website:
       style: "floating"
       align: left
       contents:
+        - href: reference/index.qmd
         - href: api/compute_metrics.md
         - href: api/write_app.md
 
@@ -27,5 +32,51 @@ format:
     css: styles.css
     toc: true
 
+interlinks:
+  sources:
+    vetiver:
+      url: "/"
+      inv: null
+      fallback: objects.json
 
+quartodoc:
+  style: pkgdown
+  dir: reference
+  package: vetiver
+  sections:
+    # TODO: figure out preface and Advanced Usage section
+    - title: ""
+      desc: ""
+      contents:
+        - VetiverModel
+        - vetiver_pin_write
+        - vetiver_create_ptype
+        # - model_card
+
+    - title: Deploy
+      desc: ""
+      contents:
+        - VetiverAPI
+        # - VetiverAPI.run
+        # - VetiverAPI.vetiver_post
+        - vetiver_endpoint
+        - predict
+        - write_app
+        # - write_docker
+        - deploy_rsconnect
+
+    - title: Monitor
+      desc: ""
+      contents:
+        - compute_metrics
+        - pin_metrics
+        - plot_metrics
+
+    - title: Model Handlers
+      desc: ""
+      contents:
+        - SKLearnHandler
+        - TorchHandler
+        - StatsmodelsHandler
+        - XGBoostHandler
 
