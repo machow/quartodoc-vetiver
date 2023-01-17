@@ -63,6 +63,41 @@
     "text": "Notes\nParameter check_ptype was changed to check_prototype. Handling of check_ptype will be removed in a future version."
   },
   {
+    "objectID": "reference/index.html",
+    "href": "reference/index.html",
+    "title": "Vetiver API docs",
+    "section": "",
+    "text": "The goal of vetiver is to provide fluent tooling to version, share, deploy, and monitor a trained model. Functions handle both recording and checking the model’s input data prototype, and predicting from a remote API endpoint. You can use vetiver with:\n\nTODO: add\nthis\nlist"
+  },
+  {
+    "objectID": "reference/index.html#section",
+    "href": "reference/index.html#section",
+    "title": "Vetiver API docs",
+    "section": "",
+    "text": "VetiverModel\nCreate VetiverModel class for serving.\n\n\nvetiver_pin_write\nPin a trained VetiverModel along with other model metadata.\n\n\nvetiver_create_ptype\n\n\n\nmodel_card\nCreate a model card for documentation"
+  },
+  {
+    "objectID": "reference/index.html#deploy",
+    "href": "reference/index.html#deploy",
+    "title": "Vetiver API docs",
+    "section": "Deploy",
+    "text": "Deploy\n\n\n\nVetiverAPI\nCreate model aware API\n\n\nvetiver_endpoint\nWrap url where VetiverModel will be deployed\n\n\npredict\nMake a prediction from model endpoint\n\n\nwrite_app\nWrite VetiverAPI app to a file\n\n\nwrite_docker\nWrites a Dockerfile to run VetiverAPI in a container\n\n\ndeploy_rsconnect\nDeploy to Posit Connect"
+  },
+  {
+    "objectID": "reference/index.html#monitor",
+    "href": "reference/index.html#monitor",
+    "title": "Vetiver API docs",
+    "section": "Monitor",
+    "text": "Monitor\n\n\n\ncompute_metrics\nCompute metrics for given time period\n\n\npin_metrics\nUpdate an existing pin storing model metrics over time\n\n\nplot_metrics\nPlot metrics over a given time period"
+  },
+  {
+    "objectID": "reference/index.html#model-handlers",
+    "href": "reference/index.html#model-handlers",
+    "title": "Vetiver API docs",
+    "section": "Model Handlers",
+    "text": "Model Handlers\n\n\n\nSKLearnHandler\nHandler class for creating VetiverModels with sklearn.\n\n\nTorchHandler\nHandler class for creating VetiverModels with torch.\n\n\nStatsmodelsHandler\nHandler class for creating VetiverModels with statsmodels.\n\n\nXGBoostHandler\nHandler class for creating VetiverModels with xgboost."
+  },
+  {
     "objectID": "reference/SKLearnHandler.html",
     "href": "reference/SKLearnHandler.html",
     "title": "Vetiver API docs",

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Vetiver API docs – statsmodelshandler</title>
+<title>Vetiver API docs – index</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -113,7 +113,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reference/index.html" class="sidebar-item-text sidebar-link">Vetiver</a>
+  <a href="../reference/index.html" class="sidebar-item-text sidebar-link active">Vetiver</a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -153,7 +153,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reference/StatsmodelsHandler.html" class="sidebar-item-text sidebar-link active">StatsmodelsHandler</a>
+  <a href="../reference/StatsmodelsHandler.html" class="sidebar-item-text sidebar-link">StatsmodelsHandler</a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -210,10 +210,15 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#StatsmodelsHandler" id="toc-StatsmodelsHandler" class="nav-link active" data-scroll-target="#StatsmodelsHandler">StatsmodelsHandler</a>
+  <li><a href="#vetiver" id="toc-vetiver" class="nav-link active" data-scroll-target="#vetiver">Vetiver</a></li>
+  <li><a href="#function-reference" id="toc-function-reference" class="nav-link" data-scroll-target="#function-reference">Function reference</a>
   <ul class="collapse">
-  <li><a href="#parameters" id="toc-parameters" class="nav-link" data-scroll-target="#parameters">Parameters</a></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a></li>
+  <li><a href="#deploy" id="toc-deploy" class="nav-link" data-scroll-target="#deploy">Deploy</a></li>
+  <li><a href="#monitor" id="toc-monitor" class="nav-link" data-scroll-target="#monitor">Monitor</a></li>
+  <li><a href="#model-handlers" id="toc-model-handlers" class="nav-link" data-scroll-target="#model-handlers">Model Handlers</a></li>
   </ul></li>
+  <li><a href="#advanced-usage" id="toc-advanced-usage" class="nav-link" data-scroll-target="#advanced-usage">Advanced Usage</a></li>
   </ul>
 </nav>
     </div>
@@ -222,39 +227,121 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="StatsmodelsHandler" class="level2">
-<h2 class="anchored" data-anchor-id="StatsmodelsHandler">StatsmodelsHandler</h2>
-<p><code>StatsmodelsHandler()</code></p>
-<p>Handler class for creating VetiverModels with statsmodels.</p>
-<section id="parameters" class="level3">
-<h3 class="anchored" data-anchor-id="parameters">Parameters</h3>
+<section id="vetiver" class="level1">
+<h1>Vetiver</h1>
+<p>The goal of vetiver is to provide fluent tooling to version, share, deploy, and monitor a trained model. Functions handle both recording and checking the model’s input data prototype, and predicting from a remote API endpoint. You can use vetiver with:</p>
+<ul>
+<li>TODO: add</li>
+<li>this</li>
+<li>list</li>
+</ul>
+</section>
+<section id="function-reference" class="level1">
+<h1>Function reference</h1>
+<section id="section" class="level2">
+<h2 class="anchored" data-anchor-id="section"></h2>
 <table class="table">
-<colgroup>
-<col style="width: 12%">
-<col style="width: 22%">
-<col style="width: 50%">
-<col style="width: 14%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-<th>Default</th>
-</tr>
-</thead>
 <tbody>
 <tr class="odd">
-<td><code>model</code></td>
-<td>statsmodels.api</td>
-<td>a trained and fit statsmodels model</td>
-<td>required</td>
+<td><a href="../reference/VetiverModel.html">VetiverModel</a></td>
+<td>Create VetiverModel class for serving.</td>
+</tr>
+<tr class="even">
+<td><a href="../reference/vetiver_pin_write.html">vetiver_pin_write</a></td>
+<td>Pin a trained VetiverModel along with other model metadata.</td>
+</tr>
+<tr class="odd">
+<td><a href="../reference/vetiver_create_ptype.html">vetiver_create_ptype</a></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><a href="../reference/model_card.html">model_card</a></td>
+<td>Create a model card for documentation</td>
 </tr>
 </tbody>
 </table>
-
-
 </section>
+<section id="deploy" class="level2">
+<h2 class="anchored" data-anchor-id="deploy">Deploy</h2>
+<table class="table">
+<tbody>
+<tr class="odd">
+<td><a href="../reference/VetiverAPI.html">VetiverAPI</a></td>
+<td>Create model aware API</td>
+</tr>
+<tr class="even">
+<td><a href="../reference/vetiver_endpoint.html">vetiver_endpoint</a></td>
+<td>Wrap url where VetiverModel will be deployed</td>
+</tr>
+<tr class="odd">
+<td><a href="../reference/predict.html">predict</a></td>
+<td>Make a prediction from model endpoint</td>
+</tr>
+<tr class="even">
+<td><a href="../reference/write_app.html">write_app</a></td>
+<td>Write VetiverAPI app to a file</td>
+</tr>
+<tr class="odd">
+<td><a href="../reference/write_docker.html">write_docker</a></td>
+<td>Writes a Dockerfile to run VetiverAPI in a container</td>
+</tr>
+<tr class="even">
+<td><a href="../reference/deploy_rsconnect.html">deploy_rsconnect</a></td>
+<td>Deploy to Posit Connect</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="monitor" class="level2">
+<h2 class="anchored" data-anchor-id="monitor">Monitor</h2>
+<table class="table">
+<tbody>
+<tr class="odd">
+<td><a href="../reference/compute_metrics.html">compute_metrics</a></td>
+<td>Compute metrics for given time period</td>
+</tr>
+<tr class="even">
+<td><a href="../reference/pin_metrics.html">pin_metrics</a></td>
+<td>Update an existing pin storing model metrics over time</td>
+</tr>
+<tr class="odd">
+<td><a href="../reference/plot_metrics.html">plot_metrics</a></td>
+<td>Plot metrics over a given time period</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="model-handlers" class="level2">
+<h2 class="anchored" data-anchor-id="model-handlers">Model Handlers</h2>
+<table class="table">
+<tbody>
+<tr class="odd">
+<td><a href="../reference/SKLearnHandler.html">SKLearnHandler</a></td>
+<td>Handler class for creating VetiverModels with sklearn.</td>
+</tr>
+<tr class="even">
+<td><a href="../reference/TorchHandler.html">TorchHandler</a></td>
+<td>Handler class for creating VetiverModels with torch.</td>
+</tr>
+<tr class="odd">
+<td><a href="../reference/StatsmodelsHandler.html">StatsmodelsHandler</a></td>
+<td>Handler class for creating VetiverModels with statsmodels.</td>
+</tr>
+<tr class="even">
+<td><a href="../reference/XGBoostHandler.html">XGBoostHandler</a></td>
+<td>Handler class for creating VetiverModels with xgboost.</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="advanced-usage" class="level1">
+<h1>Advanced Usage</h1>
+<ul>
+<li>TODO: link to Custom Handlers</li>
+</ul>
+
+
 </section>
 
 </main> <!-- /main -->
