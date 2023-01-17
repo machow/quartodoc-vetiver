@@ -1,4 +1,4 @@
-quartodoc
+git+https://github.com/machow/quartodoc.git@feat-builder
 griffe
 vetiver
 jupyter

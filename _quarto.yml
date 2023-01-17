@@ -1,6 +1,5 @@
 project:
   type: website
-  pre-render: "python -m quartodoc"
 
 filters:
   - "interlinks"
@@ -51,7 +50,7 @@ quartodoc:
         - VetiverModel
         - vetiver_pin_write
         - vetiver_create_ptype
-        # - model_card
+        - model_card.model_card
 
     - title: Deploy
       desc: ""
@@ -62,7 +61,7 @@ quartodoc:
         - vetiver_endpoint
         - predict
         - write_app
-        # - write_docker
+        - write_docker.write_docker
         - deploy_rsconnect
 
     - title: Monitor
