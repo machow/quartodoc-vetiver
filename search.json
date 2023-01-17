@@ -1,0 +1,240 @@
+[
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
+  },
+  {
+    "objectID": "reference/vetiver_endpoint.html",
+    "href": "reference/vetiver_endpoint.html",
+    "title": "Vetiver API docs",
+    "section": "",
+    "text": "vetiver_endpoint(url: str = 'http://127.0.0.1:8000/predict')\nWrap url where VetiverModel will be deployed\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nurl\nstr\nURI path to endpoint\n'http://127.0.0.1:8000/predict'\n\n\n\n\n\n\n\n\n\nType\nDescription\n\n\n\n\nstr\nURI path to endpoint"
+  },
+  {
+    "objectID": "reference/vetiver_endpoint.html#example",
+    "href": "reference/vetiver_endpoint.html#example",
+    "title": "Vetiver API docs",
+    "section": "Example",
+    "text": "Example\n\n\n\nimport vetiver endpoint = vetiver.vetiver_endpoint(url=‘http://127.0.0.1:8000/predict’)"
+  },
+  {
+    "objectID": "reference/compute_metrics.html",
+    "href": "reference/compute_metrics.html",
+    "title": "Vetiver API docs",
+    "section": "",
+    "text": "compute_metrics(data: pd.DataFrame, date_var: str, period: timedelta, metric_set: list, truth: str, estimate: str, kw)\nCompute metrics for given time period\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\ndata\nDataFrame\nPandas dataframe\nrequired\n\n\ndate_var\nstr\nColumn in data containing dates\nrequired\n\n\nperiod\ndatetime.timedelta\nDefining period to group by\nrequired\n\n\nmetric_set\nlist\nList of metrics to compute, that have the parameters y_true and y_pred\nrequired\n\n\ntruth\nstr\nColumn name for true results\nrequired\n\n\nestimate\nstr\nColumn name for predicted results\nrequired"
+  },
+  {
+    "objectID": "reference/compute_metrics.html#example",
+    "href": "reference/compute_metrics.html#example",
+    "title": "Vetiver API docs",
+    "section": "Example",
+    "text": "Example\n\n\n\nfrom datetime import timedelta import pandas as pd from sklearn.metrics import mean_squared_error, mean_absolute_error df = pd.DataFrame( … { … “index”: [“2021-01-01”, “2021-01-02”, “2021-01-03”], … “truth”: [200, 201, 199], … “pred”: [198, 200, 199], … } … ) td = timedelta(days = 1) metric_set = [mean_squared_error, mean_absolute_error] metrics = compute_metrics(df, “index”, td, metric_set, “truth”, “pred”)"
+  },
+  {
+    "objectID": "reference/TorchHandler.html",
+    "href": "reference/TorchHandler.html",
+    "title": "Vetiver API docs",
+    "section": "",
+    "text": "TorchHandler()\nHandler class for creating VetiverModels with torch.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nmodel\nnn.Module\na trained torch model\nrequired"
+  },
+  {
+    "objectID": "reference/VetiverAPI.html",
+    "href": "reference/VetiverAPI.html",
+    "title": "Vetiver API docs",
+    "section": "",
+    "text": "VetiverAPI(self, model: VetiverModel, check_prototype: bool = True, app_factory=FastAPI, kwargs)\nCreate model aware API\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nmodel\nVetiverModel\nModel to be deployed in API\nrequired\n\n\ncheck_prototype\nbool\nDetermine if data prototype should be enforced\nTrue\n\n\napp_factory\n\nType of API to be deployed\nFastAPI\n\n\n**kwargs\n\nDeprecated parameters.\n{}"
+  },
+  {
+    "objectID": "reference/VetiverAPI.html#example",
+    "href": "reference/VetiverAPI.html#example",
+    "title": "Vetiver API docs",
+    "section": "Example",
+    "text": "Example\n\n\n\nimport vetiver as vt X, y = vt.get_mock_data() model = vt.get_mock_model().fit(X, y) v = vt.VetiverModel(model = model, model_name = “my_model”, prototype_data = X) v_api = vt.VetiverAPI(model = v, check_prototype = True)"
+  },
+  {
+    "objectID": "reference/VetiverAPI.html#notes",
+    "href": "reference/VetiverAPI.html#notes",
+    "title": "Vetiver API docs",
+    "section": "Notes",
+    "text": "Notes\nParameter check_ptype was changed to check_prototype. Handling of check_ptype will be removed in a future version."
+  },
+  {
+    "objectID": "reference/index.html",
+    "href": "reference/index.html",
+    "title": "Vetiver API docs",
+    "section": "",
+    "text": "VetiverModel\nCreate VetiverModel class for serving.\n\n\nvetiver_pin_write\nPin a trained VetiverModel along with other model metadata.\n\n\nvetiver_create_ptype\n\n\n\nmodel_card\nCreate a model card for documentation\n\n\n\n\n\n\n\n\n\nVetiverAPI\nCreate model aware API\n\n\nvetiver_endpoint\nWrap url where VetiverModel will be deployed\n\n\npredict\nMake a prediction from model endpoint\n\n\nwrite_app\nWrite VetiverAPI app to a file\n\n\nwrite_docker\nWrites a Dockerfile to run VetiverAPI in a container\n\n\ndeploy_rsconnect\nDeploy to Posit Connect\n\n\n\n\n\n\n\n\n\ncompute_metrics\nCompute metrics for given time period\n\n\npin_metrics\nUpdate an existing pin storing model metrics over time\n\n\nplot_metrics\nPlot metrics over a given time period\n\n\n\n\n\n\n\n\n\nSKLearnHandler\nHandler class for creating VetiverModels with sklearn.\n\n\nTorchHandler\nHandler class for creating VetiverModels with torch.\n\n\nStatsmodelsHandler\nHandler class for creating VetiverModels with statsmodels.\n\n\nXGBoostHandler\nHandler class for creating VetiverModels with xgboost."
+  },
+  {
+    "objectID": "reference/SKLearnHandler.html",
+    "href": "reference/SKLearnHandler.html",
+    "title": "Vetiver API docs",
+    "section": "",
+    "text": "SKLearnHandler()\nHandler class for creating VetiverModels with sklearn.\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nmodel\nsklearn.base.BaseEstimator\na trained sklearn model\nrequired"
+  },
+  {
+    "objectID": "reference/vetiver_pin_write.html",
+    "href": "reference/vetiver_pin_write.html",
+    "title": "Vetiver API docs",
+    "section": "",
+    "text": "vetiver_pin_write(board, model: VetiverModel, versioned: bool = True)\nPin a trained VetiverModel along with other model metadata.\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nboard\n\nA pin board, created by pins.board_folder() or another board_ function.\nrequired\n\n\nmodel\nvetiver.vetiver_model.VetiverModel\nVetiverModel to be written to board\nrequired\n\n\nversioned\nbool\nWhether or not the pin should be versioned\nTrue"
+  },
+  {
+    "objectID": "reference/vetiver_pin_write.html#example",
+    "href": "reference/vetiver_pin_write.html#example",
+    "title": "Vetiver API docs",
+    "section": "Example",
+    "text": "Example\n\n\n\nimport vetiver from pins import board_temp model_board = board_temp(versioned = True, allow_pickle_read = True) X, y = vetiver.get_mock_data() model = vetiver.get_mock_model().fit(X, y) v = vetiver.VetiverModel(model, “my_model”, prototype_data = X) vetiver.vetiver_pin_write(model_board, v)"
+  },
+  {
+    "objectID": "reference/VetiverModel.html",
+    "href": "reference/VetiverModel.html",
+    "title": "Vetiver API docs",
+    "section": "",
+    "text": "VetiverModel(self, model, model_name: str, prototype_data=None, versioned=None, description: str = None, metadata: dict = None, kwargs)\nCreate VetiverModel class for serving.\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nmodel\n\nA trained model, such as an sklearn or torch model\nrequired\n\n\nmodel_name\nstring\nModel name or ID\nrequired\n\n\nprototype_data\npd.DataFrame, np.array\nSample of data model should expect when it is being served\nNone\n\n\nversioned\n\nShould the model be versioned when created?\nNone\n\n\ndescription\nstr\nA detailed description of the model. If omitted, a brief description will be generated.\nNone\n\n\nmetadata\ndict\nOther details to be saved and accessed for serving\nNone\n\n\n**kwargs\n\nDeprecated parameters.\n{}\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nprototype\nvetiver.Prototype\nData prototype\n\n\nhandler_predict\nCallable\nMethod to make predictions from a trained model"
+  },
+  {
+    "objectID": "reference/VetiverModel.html#notes",
+    "href": "reference/VetiverModel.html#notes",
+    "title": "Vetiver API docs",
+    "section": "Notes",
+    "text": "Notes\nVetiverModel can also take an initialized custom VetiverHandler as a model, for advanced use cases or non-supported model types. Parameter ptype_data was changed to prototype_data. Handling of ptype_data will be removed in a future version."
+  },
+  {
+    "objectID": "reference/VetiverModel.html#example",
+    "href": "reference/VetiverModel.html#example",
+    "title": "Vetiver API docs",
+    "section": "Example",
+    "text": "Example\n\n\n\nfrom vetiver import mock, VetiverModel X, y = mock.get_mock_data() model = mock.get_mock_model().fit(X, y) v = VetiverModel(model = model, model_name = “my_model”, prototype_data = X) v.description ‘A scikit-learn DummyRegressor model’"
+  },
+  {
+    "objectID": "reference/predict.html",
+    "href": "reference/predict.html",
+    "title": "Vetiver API docs",
+    "section": "",
+    "text": "predict(endpoint, data: Union[dict, pd.DataFrame, pd.Series], kw)\nMake a prediction from model endpoint\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nendpoint\n\nURI path to endpoint\nrequired\n\n\ndata\nUnion[dict, pd.DataFrame, pd.Series]\nName of endpoint\nrequired\n\n\n\n\n\n\n\n\n\nType\nDescription\n\n\n\n\ndict\nEndpoint_name and list of endpoint_fx output"
+  },
+  {
+    "objectID": "reference/predict.html#example",
+    "href": "reference/predict.html#example",
+    "title": "Vetiver API docs",
+    "section": "Example",
+    "text": "Example\n\n\n\nimport vetiver X, y = vetiver.get_mock_data() endpoint = vetiver.vetiver_endpoint(url=‘http://127.0.0.1:8000/predict’) vetiver.predict(endpoint, X) # doctest: +SKIP"
+  },
+  {
+    "objectID": "reference/XGBoostHandler.html",
+    "href": "reference/XGBoostHandler.html",
+    "title": "Vetiver API docs",
+    "section": "",
+    "text": "XGBoostHandler()\nHandler class for creating VetiverModels with xgboost.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nmodel\n\na trained and fit xgboost model\nrequired"
+  },
+  {
+    "objectID": "reference/plot_metrics.html",
+    "href": "reference/plot_metrics.html",
+    "title": "Vetiver API docs",
+    "section": "",
+    "text": "plot_metrics(df_metrics, date='index', estimate='estimate', metric='metric', n='n', kw)\nPlot metrics over a given time period\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\ndf_metrics\nDataFrame\nPandas dataframe of metrics over time, such as created by compute_metircs()\nrequired\n\n\ndate\n\nColumn in df_metrics containing dates\n'index'\n\n\nestimate\n\nColumn in df_metrics containing metric output\n'estimate'\n\n\nmetric\n\nColumn in df_metrics containing metric name\n'metric'\n\n\nn\n\nColumn in df_metrics containing number of observations\n'n'"
+  },
+  {
+    "objectID": "reference/plot_metrics.html#example",
+    "href": "reference/plot_metrics.html#example",
+    "title": "Vetiver API docs",
+    "section": "Example",
+    "text": "Example\n\n\n\nimport vetiver import pandas as pd df = pd.DataFrame( … {‘index’: {0: pd.Timestamp(‘2021-01-01 00:00:00’), … 1: pd.Timestamp(‘2021-01-01 00:00:00’), … 2: pd.Timestamp(‘2021-01-02 00:00:00’), … 3: pd.Timestamp(‘2021-01-02 00:00:00’)}, … ‘n’: {0: 1, 1: 1, 2: 1, 3: 1}, … ‘metric’: {0: ‘mean_squared_error’, … 1: ‘mean_absolute_error’, … 2: ‘mean_squared_error’, … 3: ‘mean_absolute_error’}, … ‘estimate’: {0: 4.0, 1: 2.0, 2: 1.0, 3: 1.0}} … ) plot = vetiver.plot_metrics( … df_metrics = df, … date = “index”, … estimate = “estimate”, … metric = “metric”, … n = “n”) plot.show() # doctest: +SKIP"
+  },
+  {
+    "objectID": "reference/pin_metrics.html",
+    "href": "reference/pin_metrics.html",
+    "title": "Vetiver API docs",
+    "section": "",
+    "text": "pin_metrics(board, df_metrics: pd.DataFrame, metrics_pin_name: str, pin_type: str | None = None, index_name: str = 'index', overwrite: bool = False)\nUpdate an existing pin storing model metrics over time\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nboard\n\nPins board\nrequired\n\n\ndf_metrics\npd.DataFrame\nDataframe of metrics over time, such as created by vetiver_compute_metrics()\nrequired\n\n\nmetrics_pin_name\nstr\nPin name for where the metrics are stored\nrequired\n\n\nindex_name\nstr\nThe column in df_metrics containing the aggregated dates or datetimes. Note that this defaults to a column named “index”.\n'index'\n\n\noverwrite\nbool\nIf True, overwrite any metrics for dates that exist both in the existing pin and new metrics with the new values. If False, error when the new metrics contain overlapping dates with the existing pin.\nFalse"
+  },
+  {
+    "objectID": "reference/pin_metrics.html#example",
+    "href": "reference/pin_metrics.html#example",
+    "title": "Vetiver API docs",
+    "section": "Example",
+    "text": "Example\n\n\n\nimport pins import vetiver df = pd.DataFrame( … {‘index’: {0: pd.Timestamp(‘2021-01-01 00:00:00’), … 1: pd.Timestamp(‘2021-01-01 00:00:00’), … 2: pd.Timestamp(‘2021-01-02 00:00:00’), … 3: pd.Timestamp(‘2021-01-02 00:00:00’)}, … ‘n’: {0: 1, 1: 1, 2: 1, 3: 1}, … ‘metric’: {0: ‘mean_squared_error’, … 1: ‘mean_absolute_error’, … 2: ‘mean_squared_error’, … 3: ‘mean_absolute_error’}, … ‘estimate’: {0: 4.0, 1: 2.0, 2: 1.0, 3: 1.0}} … ) board = pins.board_temp()\n\n\n\n\n\n\nboard.pin_write(df, “metrics”, type = “csv”) # doctest: +SKIP df = pd.DataFrame( … {‘index’: {0: pd.Timestamp(‘2021-01-02 00:00:00’), … 1: pd.Timestamp(‘2021-01-02 00:00:00’), … 2: pd.Timestamp(‘2021-01-03 00:00:00’), … 3: pd.Timestamp(‘2021-01-03 00:00:00’)}, … ‘n’: {0: 1, 1: 1, 2: 1, 3: 1}, … ‘metric’: {0: ‘mean_squared_error’, … 1: ‘mean_absolute_error’, … 2: ‘mean_squared_error’, … 3: ‘mean_absolute_error’}, … ‘estimate’: {0: 4.0, 1: 6.0, 2: 2.0, 3: 1.0}} … ) vetiver.pin_metrics( # doctest: +SKIP … board=board, … df_metrics=df2, … metrics_pin_name=“metrics”, … index_name=“index”, … overwrite=True)"
+  },
+  {
+    "objectID": "reference/model_card.html",
+    "href": "reference/model_card.html",
+    "title": "Vetiver API docs",
+    "section": "",
+    "text": "model_card(path='.')\nCreate a model card for documentation\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\npath\nstr\nPath to save model card\n'.'"
+  },
+  {
+    "objectID": "reference/model_card.html#notes",
+    "href": "reference/model_card.html#notes",
+    "title": "Vetiver API docs",
+    "section": "Notes",
+    "text": "Notes\nThis model card is generated as a Quarto document. For more info on Quarto, visit https://quarto.org/"
+  },
+  {
+    "objectID": "reference/vetiver_create_ptype.html",
+    "href": "reference/vetiver_create_ptype.html",
+    "title": "Vetiver API docs",
+    "section": "",
+    "text": "vetiver_create_ptype(data)"
+  },
+  {
+    "objectID": "reference/deploy_rsconnect.html",
+    "href": "reference/deploy_rsconnect.html",
+    "title": "Vetiver API docs",
+    "section": "",
+    "text": "deploy_rsconnect(connect_server, board, pin_name: str, version: str = None, extra_files: typing.List[str] = None, new: bool = False, app_id: int = None, title: str = None, python: str = None, conda_mode: bool = False, force_generate: bool = False, log_callback: typing.Callable = None, image: str = None)\nDeploy to Posit Connect\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nconnect_server\nrsconnect.api.RSConnectServer\nPosit Connect Server\nrequired\n\n\nboard\n\nPins board\nrequired\n\n\npin_name\nstr\nName of pin\nrequired\n\n\nversion\nstr\nVersion of pin\nNone\n\n\nextra_files\ntyping.List[str]\nAny extra files to include\nNone\n\n\nnew\nbool\nForce as a new deploy\nFalse\n\n\napp_id\nint\nID of an existing application to deploy new files for.\nNone\n\n\ntitle\nstr\nOptional title for the deploy.\nNone\n\n\npython\nstr\nOptional name of a Python executable\nNone\n\n\nconda_mode\nbool\nUse conda to build an environment.yml\nFalse\n\n\nforce_generate\nbool\nForce generating requirements.txt or environment.yml\nFalse\n\n\nlog_callback\ntyping.Callable\nCallback to use to write the log to\nNone\n\n\nimage\nstr\nDocker image to be specified for off-host execution\nNone"
+  },
+  {
+    "objectID": "reference/deploy_rsconnect.html#example",
+    "href": "reference/deploy_rsconnect.html#example",
+    "title": "Vetiver API docs",
+    "section": "Example",
+    "text": "Example\n\n\n\nimport vetiver import pins import rsconnect board = pins.board_temp(allow_pickle_read=True) connect_server = rsconnect.api.RSConnectServer( … url = url, … api_key = api_key) # doctest: +SKIP X, y = vetiver.get_mock_data() model = vetiver.get_mock_model().fit(X, y) v = vetiver.VetiverModel(model = model, … model_name = “my_model”, … prototype_data = X) vetiver.deploy_rsconnect( … connect_server = connect_server, … board = board, … pin_name = “my_model” … ) # doctest: +SKIP"
+  },
+  {
+    "objectID": "reference/StatsmodelsHandler.html",
+    "href": "reference/StatsmodelsHandler.html",
+    "title": "Vetiver API docs",
+    "section": "",
+    "text": "StatsmodelsHandler()\nHandler class for creating VetiverModels with statsmodels.\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nmodel\nstatsmodels.api\na trained and fit statsmodels model\nrequired"
+  },
+  {
+    "objectID": "reference/write_app.html",
+    "href": "reference/write_app.html",
+    "title": "Vetiver API docs",
+    "section": "",
+    "text": "write_app(board, pin_name: str, version: str = None, file: str = 'app.py', overwrite=False)\nWrite VetiverAPI app to a file\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nboard\n\nAPI to be written\nrequired\n\n\npin_name\nstring\nName of pin containing VetiverModel\nrequired\n\n\nversion\nstr\nPins version of VetiverModel\nNone\n\n\nfile\nstr\nName of file\n'app.py'"
+  },
+  {
+    "objectID": "reference/write_app.html#example",
+    "href": "reference/write_app.html#example",
+    "title": "Vetiver API docs",
+    "section": "Example",
+    "text": "Example\n\n\n\nimport vetiver import tempfile import pins tmp = tempfile.TemporaryDirectory() board = pins.board_temp(allow_pickle_read=True) X, y = vetiver.get_mock_data() model = vetiver.get_mock_model().fit(X, y) v = vetiver.VetiverModel(model, “my_model”, prototype_data = X) vetiver.vetiver_pin_write(board, v) vetiver.write_app(board, … “my_model”, … file = tmp.name + “/app.py”)"
+  },
+  {
+    "objectID": "reference/write_docker.html",
+    "href": "reference/write_docker.html",
+    "title": "Vetiver API docs",
+    "section": "",
+    "text": "write_docker(app_file: str = 'app.py', path: str = './', rspm_env: bool = False, host: str = '0.0.0.0', port: str = '8080')\nWrites a Dockerfile to run VetiverAPI in a container"
+  },
+  {
+    "objectID": "reference/write_docker.html#example",
+    "href": "reference/write_docker.html#example",
+    "title": "Vetiver API docs",
+    "section": "Example",
+    "text": "Example\n\n\n\nimport vetiver import tempfile import pins tmp = tempfile.TemporaryDirectory() board = pins.board_temp(allow_pickle_read=True) X, y = vetiver.get_mock_data() model = vetiver.get_mock_model().fit(X, y) v = vetiver.VetiverModel(model, “my_model”, prototype_data = X) vetiver.vetiver_pin_write(board, v) vetiver.write_app(board, … “my_model”, … file = tmp.name + “/app.py”) # need file for model vetiver.write_docker(app_file = “app.py”, path = tmp.name)"
+  },
+  {
+    "objectID": "quartodoc.html",
+    "href": "quartodoc.html",
+    "title": "Vetiver API docs",
+    "section": "",
+    "text": "from griffe.loader import GriffeLoader\nfrom griffe.docstrings.parsers import Parser\n\ngriffe = GriffeLoader(docstring_parser = Parser(\"numpy\"))\nmod = griffe.load_module(\"vetiver\") # no editable install\n\n#f_obj = mod._modules_collection[\"vetiver.load_pkgs\"]\n\n\nmod._modules_collection[\"vetiver.attach_pkgs.load_pkgs\"] # full path\n\n<Function('load_pkgs', 7, 38)>\n\n\n\nfrom quartodoc import get_function, MdRenderer\n\n# get function object ---\nf_obj = get_function(\"vetiver.attach_pkgs\", \"load_pkgs\") # not attach.laod\n\n\n# render ---\nrenderer = MdRenderer(header_level = 1)\nprint(\n    renderer.to_md(f_obj)\n)\n\n# load_pkgs { #load_pkgs }\n\n`load_pkgs(model: VetiverModel = None, packages: list = None, path='')`\n\nLoad packages necessary for predictions\n\nArgs\n----\n    model: VetiverModel\n        VetiverModel to extract packages from\n    packages: list\n        List of extra packages to include\n    path: str\n        Where to save output file\n\n\n\nc_obj = mod._modules_collection[\"vetiver.server.VetiverAPI\"]\n\nprint(\n    renderer.to_md(c_obj)\n)\n\n# VetiverAPI { #VetiverAPI }\n\n`VetiverAPI(self, model: VetiverModel, check_prototype: bool = True, app_factory=FastAPI, kwargs)`\n\nCreate model aware API\n\n## Parameters\n\n| Name              | Type         | Description                                    | Default   |\n|-------------------|--------------|------------------------------------------------|-----------|\n| `model`           | VetiverModel | Model to be deployed in API                    | required  |\n| `check_prototype` | bool         | Determine if data prototype should be enforced | `True`    |\n| `app_factory`     |              | Type of API to be deployed                     | `FastAPI` |\n| `**kwargs`        |              | Deprecated parameters.                         | `{}`      |\n\nExample\n-------\n>>> import vetiver as vt\n>>> X, y = vt.get_mock_data()\n>>> model = vt.get_mock_model().fit(X, y)\n>>> v = vt.VetiverModel(model = model, model_name = \"my_model\", prototype_data = X)\n>>> v_api = vt.VetiverAPI(model = v, check_prototype = True)\n\nNotes\n-----\nParameter `check_ptype` was changed to `check_prototype`. Handling of `check_ptype`\nwill be removed in a future version.\n\n\n\nrenderer.to_md(c_obj.members[\"vetiver_post\"]) # no -> none\n\n'# vetiver_post { #vetiver_post }\\n\\n`vetiver_post(self, endpoint_fx: Callable, endpoint_name: str = None, kw)`\\n\\nCreate new POST endpoint that is aware of model input data\\n\\n## Parameters\\n\\n| Name            | Type            | Description                           | Default   |\\n|-----------------|-----------------|---------------------------------------|-----------|\\n| `endpoint_fx`   | typing.Callable | Custom function to be run at endpoint | required  |\\n| `endpoint_name` | str             | Name of endpoint                      | `None`    |\\n\\nExample\\n-------\\n>>> import vetiver as vt\\n>>> X, y = vt.get_mock_data()\\n>>> model = vt.get_mock_model().fit(X, y)\\n>>> v = vt.VetiverModel(model = model, model_name = \"model\", prototype_data = X)\\n>>> v_api = vt.VetiverAPI(model = v, check_prototype = True)\\n>>> def sum_values(x):\\n...     return x.sum()\\n>>> v_api.vetiver_post(sum_values, \"sums\")'"
+  }
+]
