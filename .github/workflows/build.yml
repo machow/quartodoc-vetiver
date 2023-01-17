@@ -22,6 +22,7 @@ jobs:
       - uses: quarto-dev/quarto-actions/setup@v2
       - name: Build docs
         run: |
+          python -m quartodoc
           quarto render
         # push to netlify -------------------------------------------------------
 
