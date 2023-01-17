@@ -1,5 +1,6 @@
 git+https://github.com/machow/quartodoc.git@feat-builder
 griffe
+git+https://github.com/rstudio/vetiver-python.git@star-imports
 vetiver
 jupyter
 jupyterlab
