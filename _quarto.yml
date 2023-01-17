@@ -15,15 +15,12 @@ website:
         text: Reference
 
   sidebar:
-    - id: api
-      title: Get Started
-      collapse-level: 2
-      style: "floating"
-      align: left
+    - id: reference
+      title: Reference
       contents:
-        - href: reference/index.qmd
-        - href: api/compute_metrics.md
-        - href: api/write_app.md
+        - "reference/index.qmd"
+        - auto: "reference/*.qmd"
+    - id: dummy
 
 format:
   html:
@@ -41,6 +38,7 @@ interlinks:
 quartodoc:
   style: pkgdown
   dir: reference
+  out_index: _api_index.qmd
   package: vetiver
   sections:
     # TODO: figure out preface and Advanced Usage section
